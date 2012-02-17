@@ -68,7 +68,7 @@ def rewrite_git_author(old_name, old_email, new_name, new_email):
     subprocess.call(command, shell=True)
 
 def rewrite_git_committer(old_name, old_email, new_name, new_email):
-    """Rewrite commit history in git"""
+    """Rewrite committer history in git"""
 
     command = git_rewrite_command.replace('AUTHOR', 'COMMITTER') % \
                 (old_name, old_email, new_name, new_email)
