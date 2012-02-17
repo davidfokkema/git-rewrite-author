@@ -20,7 +20,7 @@
 
     Usage::
 
-        $ python git-author-rewrite.py "John Doe <john@localhost>" "John Doe <dearjohn@example.com>"
+        $ python git-rewrite-author.py "John Doe <john@localhost>" "John Doe <dearjohn@example.com>"
 
     You're not sure which authors/committers are hidden in your repository?
     What about::
