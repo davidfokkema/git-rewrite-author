@@ -20,7 +20,7 @@
 
     Usage::
 
-        $ python rewrite.py "John Doe <john@localhost>" "John Doe <dearjohn@example.com>"
+        $ python git-author-rewrite.py "John Doe <john@localhost>" "John Doe <dearjohn@example.com>"
 
     Enjoy!
 
