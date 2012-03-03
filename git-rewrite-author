@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 """ Rewrite author/committer history of a git repository
 
     Have you ever accidentally committed to a git repository with a broken
@@ -27,6 +29,8 @@
 
         $ git log --pretty=full|grep "^Author\|^Commit"|cut -d " " -f 2-|sort|uniq
 
+    Tags are rewritten automagically, too!
+
     Enjoy!
 
 """
@@ -39,7 +43,7 @@ import textwrap
 description = "Rewrite author/committer in git history"
 author_help = "'Full Name <email@domain>'"
 
-git_rewrite_command = """git filter-branch --env-filter 'if [ "$GIT_AUTHOR_NAME" == "%s" -a "$GIT_AUTHOR_EMAIL" == "%s" ]; then GIT_AUTHOR_NAME="%s"; GIT_AUTHOR_EMAIL="%s"; fi; export GIT_AUTHOR_NAME; export GIT_AUTHOR_EMAIL' -f -- --all"""
+git_rewrite_command = """git filter-branch --env-filter 'if [ "$GIT_AUTHOR_NAME" == "%s" -a "$GIT_AUTHOR_EMAIL" == "%s" ]; then GIT_AUTHOR_NAME="%s"; GIT_AUTHOR_EMAIL="%s"; fi; export GIT_AUTHOR_NAME; export GIT_AUTHOR_EMAIL' --tag-name-filter cat -f -- --all"""
 
 
 def parse_args():

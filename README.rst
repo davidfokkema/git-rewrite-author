@@ -28,4 +28,6 @@ What about::
 
     $ git log --pretty=full|grep "^Author\|^Commit"|cut -d " " -f 2-|sort|uniq
 
+Tags are rewritten automagically, too!
+
 Enjoy!
