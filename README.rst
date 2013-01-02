@@ -21,12 +21,12 @@ well as of authors?  Without all the hassle?  Now, you can!
 
 Usage::
 
-    $ python git-rewrite-author.py "John Doe <john@localhost>" "John Doe <dearjohn@example.com>"
+    $ git-rewrite-author -w "John Doe <john@localhost>" "John Doe <dearjohn@example.com>"
 
 You're not sure which authors/committers are hidden in your repository?
 What about::
 
-    $ git log --pretty=full|grep "^Author\|^Commit"|cut -d " " -f 2-|sort|uniq
+    $ git-rewrite-author -l
 
 Tags are rewritten automagically, too!
 
