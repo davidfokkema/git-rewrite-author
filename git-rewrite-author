@@ -47,7 +47,7 @@ Example:
 $ git-rewrite-author -w "Name <me@localhost>" "Full Name <me@example.com>"
 """
 
-git_rewrite_command = """git filter-branch --env-filter 'if [ "$GIT_AUTHOR_NAME" == "%s" -a "$GIT_AUTHOR_EMAIL" == "%s" ]; then GIT_AUTHOR_NAME="%s"; GIT_AUTHOR_EMAIL="%s"; fi; export GIT_AUTHOR_NAME; export GIT_AUTHOR_EMAIL' --tag-name-filter cat -f -- --all"""
+git_rewrite_command = """git filter-branch --env-filter 'if [ "$GIT_AUTHOR_NAME" = "%s" -a "$GIT_AUTHOR_EMAIL" = "%s" ]; then GIT_AUTHOR_NAME="%s"; GIT_AUTHOR_EMAIL="%s"; fi; export GIT_AUTHOR_NAME; export GIT_AUTHOR_EMAIL' --tag-name-filter cat -f -- --all"""
 git_log_command = "git log --pretty=full"
 
 
