@@ -83,7 +83,7 @@ def main(args):
 def parse_author_arg(arg):
     """Parse name/email argument"""
 
-    name, email = re.match("([A-Za-z0-9\(\)\. ]+) <(.*)>", arg).groups()
+    name, email = re.match("([A-Za-z0-9\(\)\.\- ]+) <(.*)>", arg).groups()
     return name, email
 
 
