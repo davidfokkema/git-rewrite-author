@@ -23,9 +23,11 @@ Usage::
 
     $ git-rewrite-author -w "John Doe <john@localhost>" "John Doe <dearjohn@example.com>"
 
+Then, to push your changes to the default remote::
+
     $ git push --force
 
-Not using --force will duplicate the commits on origin, not replace them, so be careful with that.
+Not using --force may duplicate the commits on origin, not replace them, so be careful with that.
 
 You're not sure which authors/committers are hidden in your repository?
 What about::
