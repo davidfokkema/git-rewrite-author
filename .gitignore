@@ -1,1 +1,3 @@
 git_rewrite_author.egg-info/
+build/
+dist/
