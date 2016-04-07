@@ -21,7 +21,7 @@ well as of authors?  Without all the hassle?  Now, you can!
 
 Usage::
 
-    $ git-rewrite-author -w "John Doe <john@localhost>" "John Doe <dearjohn@example.com>"
+    $ git rewrite-author -w "John Doe <john@localhost>" "John Doe <dearjohn@example.com>"
 
 Then, to push your changes to the default remote::
 
@@ -32,8 +32,16 @@ Not using --force may duplicate the commits on origin, not replace them, so be c
 You're not sure which authors/committers are hidden in your repository?
 What about::
 
-    $ git-rewrite-author -l
+    $ git rewrite-author -l
 
 Tags are rewritten automagically, too!
 
 Enjoy!
+
+
+Installation
+------------
+
+Clone or download this repository and run::
+
+    $ python setup.py install
