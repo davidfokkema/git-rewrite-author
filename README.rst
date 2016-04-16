@@ -36,6 +36,11 @@ What about::
 
 Tags are rewritten automagically, too!
 
+After you've checked everything is okay, you may wish to remove the original refs backed up by git --filter-branch::
+
+    $ git for-each-ref --format="%(refname)" refs/original/ | xargs -r -n 1 git update-ref -d
+
+
 Enjoy!
 
 
