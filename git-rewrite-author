@@ -61,7 +61,12 @@ Example:
 $ git-rewrite-author -w "Name <me@localhost>" "Full Name <me@example.com>"
 """
 
-git_rewrite_command = """git filter-branch --env-filter 'if [ "$GIT_AUTHOR_NAME" = "%s" -a "$GIT_AUTHOR_EMAIL" = "%s" ]; then GIT_AUTHOR_NAME="%s"; GIT_AUTHOR_EMAIL="%s"; fi; export GIT_AUTHOR_NAME; export GIT_AUTHOR_EMAIL' --tag-name-filter cat -f -- --all"""
+git_rewrite_command = """git filter-branch --env-filter '
+    if [ "$GIT_AUTHOR_NAME" = "%(old_name)s" -a "$GIT_AUTHOR_EMAIL" = "%(old_email)s" ]; then
+        export GIT_AUTHOR_NAME="%(new_name)s";
+        export GIT_AUTHOR_EMAIL="%(new_email)s";
+    fi;
+' --tag-name-filter cat -f -- --all"""
 git_log_command = "git log --pretty=full"
 
 
@@ -104,8 +109,8 @@ def parse_author_arg(arg):
 def rewrite_git_author(old_name, old_email, new_name, new_email):
     """Rewrite author history in git"""
 
-    command = git_rewrite_command % (old_name, old_email, new_name,
-                                     new_email)
+    command = git_rewrite_command % \
+        { 'old_name': old_name, 'old_email': old_email, 'new_name': new_name, 'new_email': new_email}
     subprocess.call(command, shell=True)
 
 
@@ -113,7 +118,7 @@ def rewrite_git_committer(old_name, old_email, new_name, new_email):
     """Rewrite committer history in git"""
 
     command = git_rewrite_command.replace('AUTHOR', 'COMMITTER') % \
-                (old_name, old_email, new_name, new_email)
+        { 'old_name': old_name, 'old_email': old_email, 'new_name': new_name, 'new_email': new_email}
     subprocess.call(command, shell=True)
 
 
