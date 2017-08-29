@@ -96,7 +96,7 @@ def main(args):
         rewrite_git_author(old_name, old_email, new_name, new_email)
         rewrite_git_committer(old_name, old_email, new_name, new_email)
     else:
-        print "Doing nothing.  Invoke with -h for help."
+        print("Doing nothing.  Invoke with -h for help.")
 
 
 def parse_author_arg(arg):
@@ -126,14 +126,13 @@ def list_git_authors():
     """List authors and committers"""
 
     output = subprocess.check_output(git_log_command.split(' '))
-    matches = re.findall('(Author|Commit): (.*)\n', output)
-    names = [u[1] for u in matches]
+    matches = re.findall(b'(Author|Commit): (.*)\n', output)
+    names = [u[1].decode('utf-8') for u in matches]
     unique_names = sorted(set(names))
 
-    print "The following authors and committers have contributed:"
-    print
+    print("The following authors and committers have contributed:\n")
     for name in unique_names:
-        print name
+        print(name)
 
 
 if __name__ == '__main__':
